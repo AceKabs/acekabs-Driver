@@ -1,0 +1,15 @@
+<resources>
+
+    <!-- For 10 inch Screen -->
+    <dimen name="landing_button_margin">40dp</dimen>
+    <dimen name="stan_header_padding">30dp</dimen>
+    <dimen name="padding_top">16dp</dimen>
+    <dimen name="padding_left">30dp</dimen>
+    <dimen name="padding_right">30dp</dimen>
+    <dimen name="dialog_width">400dp</dimen>
+    <dimen name="otp_height">100dp</dimen>
+    <dimen name="card_padd">90dp</dimen>
+    <dimen name="subject_grid_item_height">120dp</dimen>
+    <dimen name="subject_grid_item_width">120dp</dimen>
+
+</resources>

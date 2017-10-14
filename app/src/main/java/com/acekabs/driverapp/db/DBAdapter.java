@@ -1,0 +1,519 @@
+package com.acekabs.driverapp.db;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+/**
+ * Created by srinivas on 9/12/16.
+ */
+public class DBAdapter extends SQLiteOpenHelper {
+
+    public static final String DATABASE_NAME = "driver.db";
+    public static final String mstr[] = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+    //public static final String hmstr[]={"जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितम्बर","अक्टूबर","नवम्बर","दिसम्बर"};
+    public static final String hmstr[] = {"JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+    private static String dbPath = "/data/data/com.acekabs.driverapp/databases/";
+    private static DBAdapter mInstance = null;
+    private final Context context;
+    //	private DatabaseHelper DBHelper;
+    private SQLiteDatabase db;
+
+    public DBAdapter(Context ctx) {
+        super(ctx, DATABASE_NAME, null, 1);
+        this.context = ctx;
+    }
+
+    public static DBAdapter getInstance(Context ctx) {
+        /**
+         * use the application context as suggested by CommonsWare.
+         * this will ensure that you dont accidentally leak an Activitys
+         * context (see this article for more information:
+         * http://developer.android.com/resources/articles/avoiding-memory-leaks.html)
+         */
+        if (mInstance == null) {
+            mInstance = new DBAdapter(ctx.getApplicationContext());
+            try {
+                mInstance.createDataBase();
+                mInstance.openDataBase();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        return mInstance;
+    }
+
+    public static String strtodate(String dstr) {
+        String tmp = "-";
+        if (dstr != null) {
+            String dt_str[] = dstr.split("\\-");
+            if (dt_str.length > 2)
+                tmp = dt_str[2] + "-" + hmstr[Integer.parseInt(dt_str[1]) - 1] + "-" + dt_str[0];
+            else tmp = dstr;
+        }
+        return tmp;
+    }
+
+    private boolean checkDataBase() {
+        File dbFile = new File(dbPath + DATABASE_NAME);
+        return dbFile.exists();
+    }
+
+    public void createDataBase() throws IOException {
+
+        boolean dbExist = checkDataBase();
+
+        if (dbExist) {
+            //do nothing - database already exist
+        } else {
+
+            //By calling this method and empty database will be created into the default system path
+            //of your application so we are gonna be able to overwrite that database with our database.
+            this.getReadableDatabase();
+
+            try {
+
+                copyDataBase();
+
+            } catch (IOException e) {
+
+                throw new Error("Error copying database");
+
+            }
+        }
+
+    }
+
+    public void openDataBase() throws SQLException, IOException {
+        String fullDbPath = dbPath + DATABASE_NAME;
+        db = SQLiteDatabase.openDatabase(fullDbPath, null, SQLiteDatabase.OPEN_READWRITE);
+    }
+
+    private void copyDataBase() throws IOException {
+        try {
+
+            InputStream input = context.getAssets().open(DATABASE_NAME);
+            String outPutFileName = dbPath + DATABASE_NAME;
+            OutputStream output = new FileOutputStream(outPutFileName);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = input.read(buffer)) > 0) {
+                output.write(buffer, 0, length);
+            }
+            output.flush();
+            output.close();
+            input.close();
+        } catch (IOException e) {
+            Log.v("error", e.toString());
+        }
+    }
+
+    public synchronized void myclose() {
+
+        if (db != null) db.close();
+        super.close();
+        mInstance = null;
+        //DBHelper.close();
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+    /* (non-Javadoc)
+     * @see android.database.sqlite.SQLiteOpenHelper#onUpgrade(android.database.sqlite.SQLiteDatabase, int, int)
+	 */
+    @Override
+    public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public synchronized Cursor getCountryName(String country_namme) {
+        return db.rawQuery("select * from country_code where country_name = '" + country_namme + "'", null);
+    }
+
+    public synchronized void addNewColumn(String columnName) {
+        try {
+            if(!checkColumnExist1("driver_reg",columnName))
+            {
+                Log.e("DBAdapter","column "+columnName+" added");
+                db.execSQL("ALTER TABLE driver_reg ADD COLUMN " + columnName + " TEXT");
+            }
+            else
+            {
+                Log.e("DBAdapter","column "+columnName+" already exist");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    private boolean checkColumnExist1(String tableName
+            , String columnName) {
+        boolean result = false ;
+        Cursor cursor = null ;
+        try{
+            //Query a line
+            cursor = db.rawQuery( "SELECT * FROM " + tableName + " LIMIT 0"
+                    , null );
+            result = cursor != null && cursor.getColumnIndex(columnName) != -1 ;
+        }catch (Exception e){
+            Log.e("DBAdapter","checkColumnExists1..." + e.getMessage()) ;
+        }finally{
+            if(null != cursor && !cursor.isClosed()){
+                cursor.close() ;
+            }
+        }
+
+        return result ;
+    }
+
+    public synchronized long DriverRegDetails(String driver_fname, String driver_lname, String driver_mobileno, String driver_emailid, String password,
+                                              String company_name, String company_address, String city, String country, String pincode, String imei, String coordinates,
+                                              String device_info, String reg_date, String driver_status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_fname", driver_fname);
+        initialValues.put("driver_lname", driver_lname);
+        initialValues.put("driver_mobileno", driver_mobileno);
+        initialValues.put("driver_emailid", driver_emailid);
+        initialValues.put("password", password);
+        initialValues.put("company_name", company_name);
+        initialValues.put("company_address", company_address);
+        initialValues.put("city", city);
+        initialValues.put("driver_country", country);
+        initialValues.put("pincode", pincode);
+        initialValues.put("imei", imei);
+        initialValues.put("coordinates", coordinates);
+        initialValues.put("device_info", device_info);
+        initialValues.put("registration_date", reg_date);
+        initialValues.put("driver_status", driver_status);
+        return db.insert("driver_reg", null, initialValues);
+
+    }
+
+    public synchronized Cursor getDriver_reg(String MobileNo) {
+        return db.rawQuery("select * from driver_reg where driver_mobileno = '" + MobileNo + "'", null);
+    }
+
+    public synchronized Cursor getDriver_reg_Email(String Email) {
+        return db.rawQuery("select * from driver_reg where driver_emailid = '" + Email + "'", null);
+
+
+    }
+
+    public synchronized Cursor getDriverStatus() {
+        return db.rawQuery("select * from driver_reg ", null);
+
+
+    }
+
+
+    // Update Vehicle Info
+    public boolean updateVehicleInfo(String EMAIL, String Car_manufact, String Car_Model, String Car_Color, String Manu_Year,
+                                     String Pass_Count, String car_photoUrl, String car_licenseplate_url, String license_number) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("car_manufacture", Car_manufact);
+        initialValues.put("car_model", Car_Model);
+        initialValues.put("car_color", Car_Color);
+        initialValues.put("year_of_manufacturer", Manu_Year);
+        initialValues.put("no_of_pass", Pass_Count);
+        initialValues.put("car_photo_url", car_photoUrl);
+        //initialValues.put("driverLicenseNo_URL", car_licenseplate_url);
+        initialValues.put("driverLicensePlate_URL", car_licenseplate_url);
+        initialValues.put("license_plate_no", license_number);
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    // Update Vehicle Registration Info
+    public boolean updateVehicleRegistrationDetails(String EMAIL, ContentValues values) {
+        return db.update("driver_reg", values, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    // Update PersonalDeatails
+    public boolean UpdatePersonalInfo(String EMAIL, String Driver_Photo, String DriverLiCNO, String QatarFront,
+                                      String QatarBack, String Pass_Front, String Pass_Back, String dob) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driverPhoto_URL", Driver_Photo);
+        //initialValues.put("driverLicensePlate_URL", DriverLiCNO);
+        initialValues.put("driverLicenseNo_URL", DriverLiCNO);
+        initialValues.put("driverQatar_idFront_URL", QatarFront);
+        initialValues.put("driverQatar_idBack_URL", QatarBack);
+        initialValues.put("driverPassport_idFront_URL", Pass_Front);
+        initialValues.put("driverPassport_idBack_URL", Pass_Back);
+        initialValues.put("driver_dob", dob);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    // Update Vehicle Reg Deatails
+    public boolean UpdateVehicleDocs(String EMAIL, String Car_regFront, String Car_regBack, String Insurence) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("carRegistrationDocFrontURL", Car_regFront);
+        initialValues.put("carRegistrationDocBackURL", Car_regBack);
+        initialValues.put("vehicleInsuranceDocURL", Insurence);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdateVehicleCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("vehicle_pic_lat", lat);
+        initialValues.put("vehicle_pic_long", lon);
+        initialValues.put("vehicle_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdatelicenseCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("license_plate_lat", lat);
+        initialValues.put("license_plate_long", lon);
+        initialValues.put("license_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdateDriverPICCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_pic_lat", lat);
+        initialValues.put("driver_pic_long", lon);
+        initialValues.put("driver_photo_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdatelicenseNOCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_license_lat", lat);
+        initialValues.put("driver_license_long", lon);
+        initialValues.put("driver_license_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdateIDFrontCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_id_front_lat", lat);
+        initialValues.put("driver_id_front_long", lon);
+        initialValues.put("driver_id_front_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdateIDBackCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_id_back_lat", lat);
+        initialValues.put("driver_id_back_long", lon);
+        initialValues.put("driver_id_back_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdatePassFrontCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_passfront_lat", lat);
+        initialValues.put("driver_passfront_long", lon);
+        initialValues.put("driver_pass_front_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdatePassBackCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_pass_back_lat", lat);
+        initialValues.put("driver_pass_back_long", lon);
+        initialValues.put("driver_pass_back_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdateFrontcarregCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_car_regfront_lat", lat);
+        initialValues.put("driver_car_regfront_long", lon);
+        initialValues.put("driver_car_regfront_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdateBackcarregCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_car_regback_lat", lat);
+        initialValues.put("driver_car_regback_long", lon);
+        initialValues.put("driver_car_regback_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdateVehicleInsuCoord(String EMAIL, String lat, String lon, String status) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_car_insure_lat", lat);
+        initialValues.put("driver_car_insure_long", lon);
+        initialValues.put("driver_car_insure_image_status", status);
+
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public synchronized Cursor SignInAutentication(String email, String password) {
+        return db.rawQuery("select * from driver_reg where driver_emailid = '" + email + "' AND password = '" + password + "'", null);
+    }
+
+    public boolean UpdatedDriverStatus(String EMAIL) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_status", "1");
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public boolean UpdatedDriverStatus_in(String EMAIL) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_status", "200");
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    //  Updating Driver Registration Details
+    public boolean UpdatedDriverReg(String EMAIL) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_status", "1");
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    //  Deleting Data for SecondTime
+    public boolean DeleteAll(String email) {
+        Log.e("Delete", "Record Deleted");
+        return db.delete("driver_reg", "driver_emailid = '" + email + "'", null) > 0;
+
+    }
+
+    public synchronized long DriverRegRes_Details(
+            String firstName, String lastName, String phoneNumber, String emailID, String password, String compName, String company_address,
+            String compCity, String deviceInfo, String iMEI, String latLong, String country,
+            String activated, String Pincode, String CarName, String CarModel, String CarColor, String CarManu_year,
+            String NoPass, String Driver_DOB, String Vehicle_URL, String LicensePlate_URL, String DriverPhoto_URL, String DriverLicenseNo_URL, String IDFront_URL, String IDBack_URL,
+            String PassportFront_URL, String PassportBack_URL, String VehicleRegFront_URL, String VehicleRegBack_URL, String Insurence_URL,
+            String regDate, String json_car_pic_status, String json_pic_plate_status, String json_driver_pic_status, String json_lic_pic_status,
+            String json_frontid_pic_status, String json_id_back_pic_status, String carfront_pic_status, String carpassback_pic_status,
+            String carreg_front_pic_status, String json_carreg_back_pic_status, String json_insu_pic_status, boolean isInsert) {
+        long isWorkDone = 0;
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_fname", firstName);
+        initialValues.put("driver_lname", lastName);
+        initialValues.put("driver_mobileno", phoneNumber);
+        initialValues.put("driver_emailid", emailID);
+        initialValues.put("password", password);
+        initialValues.put("company_name", compName);
+        initialValues.put("company_address", company_address);
+        initialValues.put("city", compCity);
+        initialValues.put("device_info", deviceInfo);
+        initialValues.put("imei", iMEI);
+        initialValues.put("coordinates", latLong);
+        initialValues.put("driver_status", activated);
+        initialValues.put("pincode", Pincode);
+        initialValues.put("car_manufacture", CarName);
+        initialValues.put("car_model", CarModel);
+        initialValues.put("car_color", CarColor);
+        initialValues.put("year_of_manufacturer", CarManu_year);
+        initialValues.put("no_of_pass", NoPass);
+        initialValues.put("driver_dob", Driver_DOB);
+        initialValues.put("car_photo_url", Vehicle_URL);
+        initialValues.put("driverLicensePlate_URL", LicensePlate_URL);
+        initialValues.put("driverPhoto_URL", DriverPhoto_URL);
+        initialValues.put("driverLicenseNo_URL", DriverLicenseNo_URL);
+        initialValues.put("driverQatar_idFront_URL", IDFront_URL);
+        initialValues.put("driverQatar_idBack_URL", IDBack_URL);
+        initialValues.put("driverPassport_idFront_URL", PassportFront_URL);
+        initialValues.put("driverPassport_idBack_URL", PassportBack_URL);
+        initialValues.put("carRegistrationDocFrontURL", VehicleRegFront_URL);
+        initialValues.put("carRegistrationDocBackURL", VehicleRegBack_URL);
+        initialValues.put("vehicleInsuranceDocURL", Insurence_URL);
+        initialValues.put("registration_date", regDate);
+
+        initialValues.put("vehicle_image_status", json_car_pic_status);
+        initialValues.put("license_image_status", json_pic_plate_status);
+        initialValues.put("driver_photo_status", json_driver_pic_status);
+        initialValues.put("driver_license_image_status", json_lic_pic_status);
+        initialValues.put("driver_id_front_image_status", json_frontid_pic_status);
+        initialValues.put("driver_id_back_image_status", json_id_back_pic_status);
+        initialValues.put("driver_pass_front_image_status", carfront_pic_status);
+        initialValues.put("driver_pass_back_image_status", carpassback_pic_status);
+        initialValues.put("driver_car_regfront_image_status", carreg_front_pic_status);
+        initialValues.put("driver_car_regback_image_status", json_carreg_back_pic_status);
+        initialValues.put("driver_car_insure_image_status", json_insu_pic_status);
+        try {
+            if (isInsert) {
+                if (RecordExists(emailID).getCount() > 0) { // check whether driver is come second time than update the record
+                    String where = "driver_emailid=?";
+                    String[] whereArgs = new String[]{emailID};
+                    isWorkDone = db.update("driver_reg", initialValues, where, whereArgs);
+                    if (isWorkDone > 0) {
+                        Log.i("DBAdapter", "Driver Data Restore Successfully");
+                    }
+                } else {
+                    isWorkDone = db.insert("driver_reg", null, initialValues);
+                }
+            } else {
+                isWorkDone = db.insert("driver_reg", null, initialValues);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return isWorkDone;
+    }
+
+    public synchronized Cursor Driver_Status(String Email) {
+        return db.rawQuery("select driverLicensePlate_URL,vehicle_image_status,car_photo_url,license_image_status,license_plate_no,driver_photo_status,driverPhoto_URL,driver_license_image_status,driverLicenseNo_URL,driver_id_front_image_status,driverQatar_idFront_URL,driver_id_back_image_status,driverQatar_idBack_URL,driver_pass_front_image_status,driverPassport_idFront_URL,driver_pass_back_image_status,driverPassport_idBack_URL,driver_car_regfront_image_status,carRegistrationDocFrontURL,driver_car_regback_image_status,carRegistrationDocBackURL,driver_car_insure_image_status,vehicleInsuranceDocURL from driver_reg where driver_emailid = '" + Email + "'", null);
+    }
+
+    public synchronized long InsertIMEI_Status(String driver_email) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_email", driver_email);
+        return db.insert("imei_details", null, initialValues);
+    }
+
+    //  Updating Driver IMEI in Local
+    public boolean UpdateIMEI(String EMAIL) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_status", "1");
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+
+    public synchronized Cursor RecordExists(String email) {
+        return db.rawQuery("select * from driver_reg where driver_emailid = '" + email + "'", null);
+    }
+
+    public boolean UpdatedDriver_Status(String EMAIL) {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put("driver_status", "true");
+        return db.update("driver_reg", initialValues, "driver_emailid ='" + EMAIL + "'", null) > 0;
+    }
+
+    public synchronized Cursor CheckIsDataAlreadyInDBorNot(String email) {
+        /*SQLiteDatabase sqldb = EGLifeStyleApplication.sqLiteDatabase;
+        String Query = "Select * from " + TableName + " where " + dbfield + " = " + fieldValue;
+        Cursor cursor = sqldb.rawQuery(Query, null);
+        if(cursor.getCount() <= 0){
+            cursor.close();
+            return false;
+        }
+        cursor.close();
+        return true;*/
+        return db.rawQuery("select * from driver_reg where driver_emailid = '" + email + "'", null);
+    }
+
+}

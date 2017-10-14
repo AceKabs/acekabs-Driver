@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/vehicle_lay_edit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/otp_height"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/vehicle_edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:hint="ENTER CAR MANUFACTURER"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:paddingLeft="10dp"
+                    android:textAllCaps="true"
+                    android:textColorHint="@color/grey" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vehicle_lay_edit2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/vehicle_edit_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:hint="ENTER CAR MODEL"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vehicle_lay_edit3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/vehicle_edit_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:hint="ENTER CAR COLOR"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/vehicle_lay_edit6"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/vehicle_edit_manu"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:hint="ENTER YEAR OF MANUFACTURER"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/vehicle_lay_noofpass"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/vechile_edit_no_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:hint="ENTER NO :  OF PASSENGERS"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vehicle_lay_plateno"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/vechile_edit_plate_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:hint="ENTER LICENSE PLATE NUMBER"
+                    android:inputType="text"
+                    android:paddingLeft="10dp"
+                    android:textColorHint="@color/grey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vh_lay1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dip"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/vh_lay11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/card_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        card_view:cardBackgroundColor="@color/whilte"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true">
+
+                        <ImageView
+                            android:id="@+id/vehicle_edit_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/pic_height"
+                            android:background="@drawable/frame"
+                            android:padding="5dp"
+                            android:src="@drawable/camera_image" />
+
+                        <TextView
+                            android:id="@+id/vehicle_edit_photo_label"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/card_text_back"
+                            android:background="#65000000"
+                            android:gravity="center"
+                            android:text="CAR PHOTO"
+                            android:textColor="@color/whilte"
+                            android:textStyle="bold" />
+
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/vel_screen1_lay2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_left"
+                    android:saveEnabled="false">
+
+                    <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/card_view2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        card_view:cardBackgroundColor="@color/whilte"
+                        card_view:cardCornerRadius="10dp"
+                        card_view:cardElevation="5dp"
+                        card_view:cardUseCompatPadding="true">
+
+                        <ImageView
+                            android:id="@+id/vehicle_edit_license"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/pic_height"
+                            android:background="@drawable/frame"
+                            android:enabled="false"
+                            android:padding="5dp"
+                            android:src="@drawable/camera_image" />
+
+                        <TextView
+                            android:id="@+id/vehicle_edit_license_label"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/card_text_back"
+                            android:background="#65000000"
+                            android:gravity="center"
+                            android:text="LICENSE PLATE NO. PHOTO"
+                            android:textColor="@color/whilte"
+                            android:textStyle="bold" />
+
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_vehicle_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/vechicle_btn_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
+                    android:text="NEXT"
+                    android:textColor="@drawable/button_text_color" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/vehicle_header"
+        layout="@layout/stan_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+</LinearLayout>

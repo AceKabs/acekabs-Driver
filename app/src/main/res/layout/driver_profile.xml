@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/driver_profile_header"
+        layout="@layout/stan_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <LinearLayout
+        android:id="@+id/driver_profile_button_lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/profile_btn_signout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_margin="@dimen/landing_button_margin"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:text="SIGN OUT"
+            android:textColor="@drawable/button_text_color" />
+    </LinearLayout>
+
+
+</RelativeLayout>

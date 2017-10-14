@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dialog_width"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/lay_back"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/whilte"
+        android:gravity="center|center"
+        android:text="Your ride was cancelled"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/dialog_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
+        android:maxLines="10"
+        android:text="why did you cancel the ride?"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/cancelchoices"
+        android:layout_width="240dip"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dip"
+        android:layout_marginTop="20dip"
+        android:gravity="center|left"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radiodonotcharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dip"
+            android:text="Do not charge the rider"
+            android:textColor="@color/black"
+            android:textSize="15.0sp" />
+
+        <RadioButton
+            android:id="@+id/radionotshow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dip"
+            android:text="Rider not showed up"
+            android:textColor="@color/black"
+            android:textSize="15.0sp" />
+
+        <RadioButton
+            android:id="@+id/radiocancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dip"
+            android:text="Rider requested cancel"
+            android:textColor="@color/black"
+            android:textSize="15.0sp" />
+
+        <RadioButton
+            android:id="@+id/radioaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dip"
+            android:text="Wrong address shown"
+            android:textColor="@color/black"
+            android:textSize="15.0sp" />
+
+        <RadioButton
+            android:id="@+id/radioothers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dip"
+            android:text="Others"
+            android:textColor="@color/black"
+            android:textSize="15.0sp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnSend"
+        android:layout_width="150dip"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dip"
+        android:background="@drawable/btn_bg"
+        android:text="Send"
+        android:textColor="@drawable/button_text_color" />
+
+</LinearLayout>

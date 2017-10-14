@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#35b6d5</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="blue">#00A3C9</color>
+    <color name="whilte">#FFFFFF</color>
+    <color name="orange">#FF6600</color>
+    <color name="black">#000000</color>
+    <color name="grey">#313131</color>
+    <color name="subject_name_background">#51000000</color>
+    <color name="timer_circle">#fff</color>
+    <color name="headercolor">#00a4cc</color>
+    <color name="white">#ffffff</color>
+    <color name="md_grey_400">#BDBDBD</color>
+</resources>

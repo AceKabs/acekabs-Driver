@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="mkloader-1.2.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/6a402c61c3f3f626dcd1489522fbcbd36d6313fe/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/6a402c61c3f3f626dcd1489522fbcbd36d6313fe/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tuyenmonkey/mkloader/1.2.0/43ff5281d75be02f0d70544ae7d02b03e3fb8a11/mkloader-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

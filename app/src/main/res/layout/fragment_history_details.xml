@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/history"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="5dp"
+            android:text="Back"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headerLayout">
+
+        <fragment
+            android:id="@+id/map_rout"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headerLayout"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/pick_layout">
+
+        <RelativeLayout
+            android:id="@+id/topLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/pickImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/g_spot" />
+
+            <View
+                android:layout_width="0.3dp"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/dropImg"
+                android:layout_below="@+id/pickImg"
+                android:layout_marginLeft="9.5dp"
+                android:background="@color/black" />
+
+            <TextView
+                android:id="@+id/pickTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_toRightOf="@+id/pickImg"
+                android:paddingLeft="5dp"
+                android:text="Pick-up"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/pickupLocationTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pickTxt"
+                android:layout_toRightOf="@+id/pickImg"
+                android:paddingLeft="5dp"
+                android:text="Pick-up "
+                android:textSize="14sp" />
+
+            <View
+                android:id="@+id/horizontalLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/pickupLocationTxt"
+                android:layout_toRightOf="@+id/pickImg"
+                android:background="@color/md_grey_400" />
+
+            <ImageView
+                android:id="@+id/dropImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@+id/dropTxt"
+                android:src="@drawable/red_spot" />
+
+            <TextView
+                android:id="@+id/dropTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/horizontalLine"
+                android:layout_toRightOf="@+id/dropImg"
+                android:paddingLeft="5dp"
+                android:text="Drop"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/dropLocationTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dropTxt"
+                android:layout_toRightOf="@+id/pickImg"
+                android:paddingLeft="5dp"
+                android:text="Drop"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="#fff"
+        android:weightSum="3">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/durationImgView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/app_icon" />
+
+            <TextView
+                android:id="@+id/durationTxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/durationImgView"
+                android:text="Duration \n 15 min"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/distanceImgView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/app_icon" />
+
+            <TextView
+                android:id="@+id/distanceTxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/distanceImgView"
+                android:text="Distance \n 5.0 KM"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/fareImgView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/app_icon" />
+
+            <TextView
+                android:id="@+id/costTxtView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/fareImgView"
+                android:text="Total Fare \n 23.00"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

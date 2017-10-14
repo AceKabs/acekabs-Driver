@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#333333"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="8"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:background="#0b8cab">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Ride Request"
+                android:textColor="@color/whilte"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rideTimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="3dip"
+            android:layout_marginTop="3dip"
+            android:gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/whilte"
+            android:textSize="18.0sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dip"
+            android:foregroundGravity="center">
+
+            <com.acekabs.driverapp.ui.CustomMap
+                android:id="@+id/requestMapView"
+                class="com.google.android.gms.maps.MapView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="6dip" />
+
+            <io.github.krtkush.lineartimer.LinearTimerView
+                android:id="@+id/linearTimer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:initialColor="@color/whilte"
+                app:progressColor="#0b8cab"
+                app:radius="26dp"
+                app:strokeWidth="4dp" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/rideTime"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="7 Minutes"
+            android:textColor="@color/whilte"
+            android:textSize="18.0sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rideAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:gravity="center"
+            android:singleLine="false"
+            android:text="112-113 ,B-2/1 Amaltaas Regency,Bhopal"
+            android:textColor="@color/whilte"
+            android:textSize="18.0sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/rideCharges"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="1.5x Surge Charges"
+            android:textColor="@color/whilte"
+            android:textSize="18.0sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_gravity="bottom"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAccept"
+            android:layout_width="0dp"
+            android:layout_height="50dip"
+            android:layout_margin="20dip"
+            android:layout_weight="1"
+            android:background="#0b8cab"
+            android:text="Accept"
+            android:textAllCaps="true"
+            android:textColor="@color/whilte"
+            android:textSize="15.0sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnDecline"
+            android:layout_width="0dp"
+            android:layout_height="50dip"
+            android:layout_margin="20dip"
+            android:layout_weight="1"
+            android:background="#0b8cab"
+            android:text="Decline"
+            android:textAllCaps="true"
+            android:textColor="@color/whilte"
+            android:textSize="15.0sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

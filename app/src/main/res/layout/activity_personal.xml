@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/personal_header"
+        layout="@layout/stan_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="#DCDCDC"
+        android:gravity="center"
+        android:text="Documents Upload"
+        android:textColor="@color/black" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/vehicle_lay_edit01"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/otp_height"
+                android:background="@drawable/edit_bg"
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/personal_edit_dob"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/button_height"
+                        android:layout_weight="1"
+                        android:background="@color/whilte"
+                        android:gravity="left|center"
+                        android:hint="ENTER DOB"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/grey"
+                        android:textColorHint="@color/grey" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/vehicle_license_no_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="right"
+                        android:padding="10dp"
+                        android:src="@drawable/cal" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_lay_edit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/personal_edit_drivinglic"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:drawableRight="@drawable/camera"
+                    android:hint="Enter Driving Licence Number"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_lay_edit2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/personal_edit_idfront"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:drawableRight="@drawable/camera"
+                    android:hint=" QATAT ID(Front)"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_lay_edit3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/personal_edit_idback"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:drawableRight="@drawable/camera"
+                    android:hint=" QATAT ID(Back)"
+                    android:inputType="number"
+                    android:maxLength="20"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_lay_passportfront"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/personal_edit_passport_front"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:drawableRight="@drawable/camera"
+                    android:hint="PASSPORT FRONT"
+                    android:inputType="number"
+                    android:maxLength="20"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_lay_passportback"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:background="@drawable/edit_bg"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:paddingLeft="2dp">
+
+                <EditText
+                    android:id="@+id/personal_edit_passback"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@color/whilte"
+                    android:drawableRight="@drawable/camera"
+                    android:hint="PASSPORT BACK"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_personal_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_top"
+                android:layout_marginRight="@dimen/padding_top"
+                android:layout_marginTop="@dimen/padding_top"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/personal_btn_confirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_bg"
+                    android:text="NEXT"
+                    android:textColor="@drawable/button_text_color" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

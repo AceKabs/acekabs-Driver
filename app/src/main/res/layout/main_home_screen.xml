@@ -1,0 +1,380 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFF00"
+    tools:context="com.acekabs.driverapp.activity.MainHomeScreen">
+    <!-- This is your normal screen layout -->
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF"
+        android:clickable="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|bottom">
+
+                <LinearLayout
+                    android:id="@+id/options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="22dip"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/mapoptions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dip"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/globeblack" />
+
+                    <ImageView
+                        android:id="@+id/mapcurentgpssettings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dip"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/gpslocation" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rideLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/options"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/whilte"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnCallRider"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dip"
+                            android:layout_weight="1"
+                            android:background="#00a4cc"
+                            android:text="CALL RIDER"
+                            android:textColor="@color/whilte" />
+
+                        <Button
+                            android:id="@+id/btnRiderLocated"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dip"
+                            android:layout_weight="1"
+                            android:background="#00a4cc"
+                            android:text="RIDER LOCATED"
+                            android:textColor="@color/whilte" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnCancelRider"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fe4a49"
+                        android:text="CANCEL RIDE"
+                        android:textColor="@color/whilte" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/startRideLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rideLayout"
+                    android:background="@color/whilte"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnStartRides"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dip"
+                        android:layout_weight="1"
+                        android:background="#00a4cc"
+                        android:text="START RIDE"
+                        android:textColor="@color/whilte" />
+
+                    <Button
+                        android:id="@+id/btnCancelRides"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dip"
+                        android:layout_weight="1"
+                        android:background="#00a4cc"
+                        android:text="CANCEL RIDE"
+                        android:textColor="@color/whilte" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/stopRideLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/startRideLayout"
+                    android:background="@color/whilte"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnStopRides"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dip"
+                        android:layout_margin="25dip"
+                        android:background="#00a4cc"
+                        android:text="STOP RIDE"
+                        android:textColor="@color/whilte" />
+                </LinearLayout>
+            </RelativeLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/headerLayouts"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#00a4cc"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/stan_header_padding">
+
+                <ImageView
+                    android:id="@+id/menu_menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_menu" />
+
+                <TextView
+                    android:id="@+id/menu_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="75dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal|center"
+                    android:text="ACE CABS"
+                    android:textAllCaps="true"
+                    android:textColor="@color/whilte"
+                    android:visibility="invisible" />
+
+                <ImageButton
+                    android:id="@+id/mySwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dip"
+                    android:layout_toLeftOf="@+id/myMeterSwitch"
+                    android:background="@drawable/offline"
+                    android:gravity="center" />
+
+                <ImageButton
+                    android:id="@+id/myMeterSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dip"
+                    android:background="@drawable/taximeter"
+                    android:gravity="center" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/pickupDetails"
+                android:layout_width="match_parent"
+                android:layout_height="90dip"
+                android:background="@color/whilte"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/passengericon"
+                    android:layout_width="54dip"
+                    android:layout_height="54dip"
+                    android:layout_margin="10dip"
+                    android:src="@drawable/name" />
+
+                <LinearLayout
+                    android:id="@+id/detailslyt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dip"
+                    android:layout_toRightOf="@+id/passengericon"
+                    android:layout_weight="7.5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/passenegrName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="15.0sp" />
+
+                    <TextView
+                        android:id="@+id/passenegrAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/passenegrName"
+                        android:layout_toRightOf="@+id/passengericon"
+                        android:singleLine="false"
+                        android:text="Demo"
+                        android:textColor="@color/black"
+                        android:textSize="15.0sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="2dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dip"
+                    android:layout_marginTop="3dip"
+                    android:background="@color/grey" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="2.5"
+                    android:gravity="center|left"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/navigationview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dip"
+                        android:src="@drawable/navigation" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Navigate"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <!-- The navigation drawer layout goes here -->
+    <LinearLayout
+        android:id="@+id/drawer"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="#FFFFFF"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="1dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="#DCDCDC"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/menuPic"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/splash" />
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/sideMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#DCDCDC"
+                android:dividerHeight="1dip"
+                android:footerDividersEnabled="true"
+                android:headerDividersEnabled="true" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#DCDCDC" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/profile_sign_out"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Sign Out"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:id="@+id/slide_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/home_name"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:padding="15dp"
+                    android:paddingLeft="30dp"
+                    android:src="@drawable/profile_name" />
+
+                <TextView
+                    android:id="@+id/slide_fanme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="15dp"
+                    android:text=""
+                    android:textColor="@color/whilte"
+                    android:textSize="24sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.DrawerLayout>

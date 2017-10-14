@@ -1,0 +1,23 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <!-- For Normal Screen -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="button_height">60dp</dimen>
+    <dimen name="landing_button_margin">10dp</dimen>
+    <dimen name="stan_header_padding">6dp</dimen>
+    <dimen name="signup_edit_padding">10dp</dimen>
+    <dimen name="padding_top">16dp</dimen>
+    <dimen name="padding_left">10dp</dimen>
+    <dimen name="padding_right">10dp</dimen>
+    <dimen name="dialog_width">300dp</dimen>
+    <dimen name="otp_height">50dp</dimen>
+    <dimen name="otp_hei">10dp</dimen>
+    <dimen name="card_padd">10dp</dimen>
+    <dimen name="card_text_back">30dp</dimen>
+    <dimen name="pic_height">140dp</dimen>
+    <dimen name="card_padd1">5dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="subject_grid_item_height">120dp</dimen>
+    <dimen name="subject_grid_item_width">120dp</dimen>
+</resources>

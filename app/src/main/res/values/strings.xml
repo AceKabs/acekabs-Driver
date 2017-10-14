@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">KABS Driver</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="otp_didnot">Did \'t get the code\?</string>
+    <string name="otp_resend">Resend Code</string>
+    <string name="forgot_pass">Please enter the registered email id we will send you a link to reset your password</string>
+    <string name="resume">SIGN UP</string>
+    <string name="title_activity_update_details">UpdateDetails</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="summary"><u>Summary</u></string>
+    <string-array name="menuTitles">
+        <item>Home</item>
+        <item>Profile</item>
+        <item>Payment</item>
+        <item>History</item>
+    </string-array>
+    <integer-array name="menuIcons">
+        <item>@drawable/home_or</item>
+        <item>@drawable/profile</item>
+        <item>@drawable/profile</item>
+        <item>@drawable/settings</item>
+    </integer-array>
+    <string name="rupee">&#xf156;</string>
+    <string name="dollar">&#xf155;</string>
+    <string name="qar">QAR</string>
+    <string name="history">History</string>
+    <string name="error_text">Error</string>
+    <string name="something_went_wrong_text">Oops, something went wrong. Please try again later!</string>
+    <string name="close_application">Click OK to close application.</string>
+    <string name="cancelText">Cancel</string>
+    <string name="weekly">Weekly Statement</string>
+    <string name="total_earning">Total Earning Breakdown</string>
+</resources>

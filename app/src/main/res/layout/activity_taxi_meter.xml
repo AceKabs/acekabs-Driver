@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_taxi_meter"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:clickable="true"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="3.5"
+        android:background="#00a4cc"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="GPS Status :   "
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+
+            <TextView
+                android:id="@+id/tvgpsstatus"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="0.6"
+                android:gravity="center|left"
+                android:text=""
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+
+            <com.tuyenmonkey.mkloader.MKLoader
+                android:id="@+id/gpsicons"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                app:mk_color="@color/whilte"
+                app:mk_type="PhoneWave" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="Distance :   "
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+
+            <TextView
+                android:id="@+id/tvDistance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text=""
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="5dip"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="Time :   "
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text=""
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="Total Fare :   "
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+
+            <TextView
+                android:id="@+id/tvcurrecnysymbol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$"
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+
+            <TextView
+                android:id="@+id/tvTotalFareAmount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dip"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="0.00"
+                android:textColor="@color/whilte"
+                android:textSize="21.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5.5">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/requestMapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnStartRides"
+                android:layout_width="0dp"
+                android:layout_height="60dip"
+                android:layout_gravity="center"
+                android:layout_margin="15dip"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:gravity="center"
+                android:text="START RIDE"
+                android:textColor="@color/whilte"
+                android:textSize="16.0sp" />
+
+            <Button
+                android:id="@+id/btnStopRides"
+                android:layout_width="0dp"
+                android:layout_height="60dip"
+                android:layout_gravity="center"
+                android:layout_margin="15dip"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:gravity="center"
+                android:text="END RIDE"
+                android:visibility="gone"
+                android:textColor="@color/whilte"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnCancelRider"
+            android:layout_width="match_parent"
+            android:layout_height="60dip"
+            android:layout_gravity="center"
+            android:background="#fe4a49"
+            android:gravity="center"
+            android:text="CANCEL RIDE"
+            android:textColor="@color/whilte"
+            android:textSize="16.0sp" />
+    </LinearLayout>
+</LinearLayout>

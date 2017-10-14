@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/update_per_lay1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LandingPage">
+
+    <include
+        android:id="@+id/update_header"
+        layout="@layout/profile_stan_header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottom_layer"
+        android:layout_below="@+id/per_label">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_margin="20dp"
+                        android:background="#fff">
+
+                        <com.acekabs.driverapp.RoundRectCornerImageView
+                            android:id="@+id/profile_personal_driver_pic1"
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:background="@drawable/img_back"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/camera_image" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/subject_name_background">
+
+                            <TextView
+                                android:id="@+id/profile_card_label_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left|center"
+                                android:gravity="bottom"
+                                android:paddingLeft="5dp"
+                                android:text="DRIVER PHOTO"
+                                android:textColor="#fff"
+                                android:textSize="10sp" />
+
+                            <ImageButton
+                                android:id="@+id/driver_img_photo_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center"
+                                />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_margin="20dp"
+                        android:background="#fff">
+
+                        <com.acekabs.driverapp.RoundRectCornerImageView
+                            android:id="@+id/profile_personal_driver_pic2"
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:background="@drawable/img_back"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/camera_image" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/subject_name_background">
+
+                            <TextView
+                                android:id="@+id/profile_card_label_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left|center"
+                                android:gravity="bottom"
+                                android:paddingLeft="5dp"
+                                android:text="Driver Licence Plate"
+                                android:textColor="#fff"
+                                android:textSize="10sp" />
+
+                            <ImageButton
+                                android:id="@+id/driver_img_lic_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center"
+                                 />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_margin="20dp"
+                        android:background="#fff">
+
+                        <com.acekabs.driverapp.RoundRectCornerImageView
+                            android:id="@+id/profile_personal_driver_pic3"
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:background="@drawable/img_back"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/camera_image" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/subject_name_background">
+
+                            <TextView
+                                android:id="@+id/profile_card_label_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left|center"
+                                android:gravity="bottom"
+                                android:paddingLeft="5dp"
+                                android:text="ID Front"
+                                android:textColor="#fff"
+                                android:textSize="10sp" />
+
+                            <ImageButton
+                                android:id="@+id/driver_img_idfront_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center"
+                                 />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_margin="20dp"
+                        android:background="#fff">
+
+                        <com.acekabs.driverapp.RoundRectCornerImageView
+                            android:id="@+id/profile_personal_driver_pic4"
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:background="@drawable/img_back"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/camera_image" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/subject_name_background">
+
+                            <TextView
+                                android:id="@+id/profile_card_label_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left|center"
+                                android:gravity="bottom"
+                                android:paddingLeft="5dp"
+                                android:text="ID Back"
+                                android:textColor="#fff"
+                                android:textSize="10sp" />
+
+                            <ImageButton
+                                android:id="@+id/driver_img_idback_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center"
+                                 />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_margin="20dp"
+                        android:background="#fff">
+
+                        <com.acekabs.driverapp.RoundRectCornerImageView
+                            android:id="@+id/profile_personal_driver_pic5"
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:background="@drawable/img_back"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/camera_image" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/subject_name_background">
+
+                            <TextView
+                                android:id="@+id/profile_card_label_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left|center"
+                                android:gravity="bottom"
+                                android:paddingLeft="5dp"
+                                android:text="Passport Front"
+                                android:textColor="#fff"
+                                android:textSize="10sp" />
+
+                            <ImageButton
+                                android:id="@+id/driver_img_passfront_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center"
+                                 />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_margin="20dp"
+                        android:background="#fff">
+
+                        <com.acekabs.driverapp.RoundRectCornerImageView
+                            android:id="@+id/profile_personal_driver_pic6"
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:background="@drawable/img_back"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/camera_image" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/subject_name_background">
+
+                            <TextView
+                                android:id="@+id/profile_card_label_6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left|center"
+                                android:gravity="bottom"
+                                android:paddingLeft="5dp"
+                                android:text="Passport Back"
+                                android:textColor="#fff"
+                                android:textSize="10sp" />
+
+                            <ImageButton
+                                android:id="@+id/driver_img_passback_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right|center"
+                              />
+                        </FrameLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_personal_edit_dob_lay1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
+
+                <EditText
+                    android:id="@+id/profile_personal_edit_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_bg"
+                    android:drawableRight="@drawable/cal"
+                    android:focusable="false"
+                    android:gravity="left|center"
+                    android:hint="ENTER DOB"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textColor="@color/grey"
+                    android:textColorHint="@color/grey" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/profile_bottom_layer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+
+                <Button
+                    android:id="@+id/profile_personal_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_height"
+                    android:background="@drawable/btn_bg"
+                    android:text="UPDATE"
+                    android:textColor="@drawable/button_text_color" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
